@@ -1,18 +1,23 @@
 package com.example.eway.user.fragments.authentication
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.example.eway.Constants
 import com.example.eway.Utils
+import com.example.eway.admin.activities.AdminActivity
 import com.example.eway.user.activities.MainActivity
 import com.example.eway.databinding.FragmentOTPBinding
 import com.example.eway.user.models.UsersModel
@@ -21,7 +26,6 @@ import kotlinx.coroutines.launch
 
 class OTPFragment : Fragment() {
     private lateinit var binding: FragmentOTPBinding
-    private lateinit var userOTP: String
     private lateinit var time: CountDownTimer
     private val arg: OTPFragmentArgs by navArgs()
     private val authViewModel: AuthViewModel by viewModels()
@@ -41,6 +45,7 @@ class OTPFragment : Fragment() {
 
         sendOTP(arg.phoneNo, requireActivity())
 
+        Toast.makeText(requireContext(), arg.userRole, Toast.LENGTH_SHORT).show()
 
         binding.buttonVerifyOtp.setOnClickListener {
 
@@ -78,9 +83,19 @@ class OTPFragment : Fragment() {
         lifecycleScope.launch {
             authViewModel.verified.collect { verified ->
                 if (verified == true) {
+
+                    val sharedPreferences = requireContext().getSharedPreferences(Constants.SHARED_PREF_NAME,Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString(Constants.USER_ROLE,arg.userRole).apply()
+
                     Utils.showToast(requireContext(), "Logged in Successfully")
                     buttonState(false, 1f, "Verification successful")
-                    startActivity(Intent(requireActivity(), MainActivity::class.java))
+                    if (arg.userRole == "buyer") {
+                        startActivity(Intent(requireActivity(), MainActivity::class.java))
+                    }else{
+                        startActivity(Intent(requireActivity(), AdminActivity::class.java))
+                    }
+                    requireActivity().finish()
                 } else if (verified == false) {
                     buttonState(true, 1f, "Verify OTP")
                 }

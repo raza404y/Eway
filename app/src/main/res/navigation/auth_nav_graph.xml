@@ -30,6 +30,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="userRole"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/OTPFragment"
@@ -38,6 +41,9 @@
         tools:layout="@layout/fragment_o_t_p" >
         <argument
             android:name="phoneNo"
+            app:argType="string" />
+        <argument
+            android:name="userRole"
             app:argType="string" />
     </fragment>
 </navigation>

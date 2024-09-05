@@ -22,6 +22,11 @@
     <string name="seller">Seller</string>
     <string name="i_am">I\' AM</string>
     <string name="logout">Logout</string>
+    <string name="switch_to_seller">Switch to Seller</string>
+    <string name="manage_your_shop">Manage your shop!</string>
+    <string name="switch_to_buyer">Switch to Buyer</string>
+    <string name="home">Home</string>
+    <string name="upload_products">Upload Products</string>
 
 
 </resources>

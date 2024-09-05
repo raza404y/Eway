@@ -1,6 +1,6 @@
 package com.example.eway.user.models
 
-data class ShopModel(
+data class ShopsModel(
     var shopImage: Int,
     var shopName: String
 )

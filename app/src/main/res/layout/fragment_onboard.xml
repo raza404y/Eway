@@ -103,7 +103,7 @@
                 tools:layout_editor_absoluteY="121dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/continue_btn"
+                android:id="@+id/buyer_btn"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_48sdp"
                 android:layout_weight="1"

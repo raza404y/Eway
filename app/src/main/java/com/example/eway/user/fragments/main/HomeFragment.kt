@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
 
     private fun setShopsCategories(shopList: java.util.ArrayList<ShopsModel>) {
 
-
         shopList.add(ShopsModel(R.drawable.cleaning, "Cleaning"))
         shopList.add(ShopsModel(R.drawable.cold_and_juices, "Cold Drinks and Juices"))
         shopList.add(ShopsModel(R.drawable.dairy_breakfast, "Dairy and Breakfast"))

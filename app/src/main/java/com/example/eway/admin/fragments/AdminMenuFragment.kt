@@ -1,4 +1,4 @@
-package com.example.eway.user.fragments.main
+package com.example.eway.admin.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,20 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.eway.R
-import com.example.eway.Utils
-import com.example.eway.admin.activities.AdminActivity
-import com.example.eway.databinding.FragmentMenuBinding
+import com.example.eway.databinding.FragmentAdminMenuBinding
 import com.example.eway.user.activities.AuthenticationActivity
+import com.example.eway.user.activities.MainActivity
 
-
-class MenuFragment : Fragment() {
-    private lateinit var binding: FragmentMenuBinding
+class AdminMenuFragment : Fragment() {
+    private lateinit var binding: FragmentAdminMenuBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentMenuBinding.inflate(layoutInflater)
+        binding = FragmentAdminMenuBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -30,18 +28,16 @@ class MenuFragment : Fragment() {
         val navController = findNavController()
 
         binding.closeBtn.setOnClickListener {
-            navController.navigate(R.id.action_menuFragment_to_homeFragments)
+            navController.navigate(R.id.action_adminMenuFragment_to_addProductsFragment)
         }
 
         binding.logoutBtn.setOnClickListener {
-            Utils.getAuthInstance().signOut()
             startActivity(Intent(requireActivity(),AuthenticationActivity::class.java))
         }
 
         binding.switchBtn.setOnClickListener {
-            startActivity(Intent(requireActivity(),AdminActivity::class.java))
+            startActivity(Intent(requireActivity(),MainActivity::class.java))
         }
 
     }
-
 }

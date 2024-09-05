@@ -6,8 +6,11 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.eway.Utils
 import com.example.eway.databinding.FragmentPhoneNoBinding
 
@@ -16,6 +19,7 @@ class PhoneNoFragment : Fragment() {
     private lateinit var binding: FragmentPhoneNoBinding
     private lateinit var phoneWithCountryCode: String
     private var validNumber = false
+    private val arg: PhoneNoFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +50,7 @@ class PhoneNoFragment : Fragment() {
                 if (!validNumber) {
                     Utils.showToast(requireContext(),"Incorrect Phone No.")
                 } else {
-                    val action = PhoneNoFragmentDirections.actionPhoneNoFragmentToOTPFragment(phoneWithCountryCode)
+                    val action = PhoneNoFragmentDirections.actionPhoneNoFragmentToOTPFragment(phoneWithCountryCode,arg.userRole)
                     findNavController().navigate(action)
             }
         }
