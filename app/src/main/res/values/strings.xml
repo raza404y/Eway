@@ -16,6 +16,8 @@
     <string name="didn_t_receive_the_otp">Didn\'t receive the OTP?</string>
     <string name="unlock_a_world_of_deals_with_just_your_number">Unlock a World of Deals with Just Your Number!</string>
     <string name="shop_effortlessly_with_our_app_where_exclusive_deals_and_a_seamless_experience_are_just_a_tap_away">Shop effortlessly with our app, where exclusive deals and a seamless experience are just a tap away.</string>
+    <string name="shops_by_category">Shops by Category</string>
+    <string name="best_sellers">Best Sellers</string>
 
 
 </resources>

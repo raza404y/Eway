@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragments"
-        android:name="com.example.eway.fragments.main.HomeFragments"
+        android:name="com.example.eway.fragments.main.HomeFragment"
         android:label="fragment_home_fragments"
-        tools:layout="@layout/fragment_home_fragments" />
+        tools:layout="@layout/fragment_home" />
 </navigation>
