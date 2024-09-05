@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "425460414848",
+    "project_id": "eway-1bfe8rwe543",
+    "storage_bucket": "eway-1bfe8rwe543.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425460414848:android:3b964208e6439f1de76965",
+        "android_client_info": {
+          "package_name": "com.example.eway"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoZ_X2EsUSD59k_vXi6QkikjrqBEJhg3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

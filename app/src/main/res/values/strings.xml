@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Eway</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="discover_the_joy_of_shopping_with_eway">Discover the Joy of Shopping with Eway.</string>
+    <string name="continue_txt">Continue</string>
+    <string name="phone_num_hint">312 1122777</string>
+    <string name="get_otp">Get Otp</string>
+    <string name="enter_mobile_number">Enter Mobile number</string>
+    <string name="we_will_send_you_an_one_time_password_on_this_mobile_number.">We will send you an one time password on this mobile number wait a minute</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
+    <string name="verify">Verify</string>
+    <string name="resend_again">RESEND AGAIN</string>
+    <string name="didn_t_receive_the_otp">Didn\'t receive the OTP?</string>
+    <string name="unlock_a_world_of_deals_with_just_your_number">Unlock a World of Deals with Just Your Number!</string>
+    <string name="shop_effortlessly_with_our_app_where_exclusive_deals_and_a_seamless_experience_are_just_a_tap_away">Shop effortlessly with our app, where exclusive deals and a seamless experience are just a tap away.</string>
+
+
+</resources>

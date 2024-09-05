@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    android:background="@color/white"
+    android:contentDescription="@string/app_name"
+    tools:context=".fragments.OTPFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_15sdp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/ic_receive"
+            android:contentDescription="@string/app_name"
+            android:layout_marginTop="@dimen/_60sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otp_verification"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_the_otp_sent_to"
+            android:layout_marginStart="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_18sdp"
+            android:textSize="@dimen/_12ssp"/>
+
+        <TextView
+            android:id="@+id/showPhoneNoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14ssp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+
+
+        <in.aabhasjindal.otptextview.OtpTextView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:height="@dimen/_36sdp"
+            app:width="@dimen/_30sdp"
+            app:bar_enabled="true"
+            app:bar_height="2dp"
+            app:length="6"
+            app:bar_active_color="@color/yellow"
+            app:bar_inactive_color="@color/view_color"
+            app:otp_text_size="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/didn_t_receive_the_otp"
+                android:textSize="@dimen/_12sdp"/>
+
+            <TextView
+                android:id="@+id/resendOtpTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resend_again"
+                android:background="@drawable/ripple_bg"
+                android:padding="@dimen/_5sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                tools:ignore="RtlSymmetry" />
+
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:animateLayoutChanges="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonVerifyOtp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+                android:text="@string/verify"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:padding="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:elegantTextHeight="true"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cornerRadius="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:textSize="@dimen/_11ssp"
+                app:rippleColor="@color/white"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+        </FrameLayout>
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>
