@@ -1,10 +1,12 @@
 package com.example.eway.admin.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -17,18 +19,14 @@ class AdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         window.statusBarColor = resources.getColor(R.color.white)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.admin_fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
 
-        NavigationUI.setupWithNavController(binding.bottomNavbar, navController)
+        NavigationUI.setupWithNavController(binding.bottomNavbar1, navController)
     }
 }
