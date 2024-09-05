@@ -5,20 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.main.HomeFragment">
+    tools:context=".user.fragments.main.HomeFragment">
 
-
-    <SearchView
-        android:id="@+id/search_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_39sdp"
-        android:layout_marginHorizontal="@dimen/_14sdp"
-        android:layout_marginVertical="@dimen/_12sdp"
-        android:background="@drawable/search_bg"
-        android:iconifiedByDefault="false"
-        android:queryBackground="@null"
-        android:queryHint="Search.."
-        android:searchIcon="@android:drawable/ic_search_category_default" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginVertical="@dimen/_12sdp">
+
+
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_39sdp"
+                android:background="@drawable/search_bg"
+                android:iconifiedByDefault="false"
+                android:queryBackground="@null"
+                android:queryHint="Search.."
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintEnd_toStartOf="@id/menu_btn"
+                android:searchIcon="@android:drawable/ic_search_category_default"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/menu_btn"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/switch_btn_bg"
+                android:contentDescription="@string/phone_num_hint"
+                android:src="@drawable/menu_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/search_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
 
 
     <androidx.core.widget.NestedScrollView

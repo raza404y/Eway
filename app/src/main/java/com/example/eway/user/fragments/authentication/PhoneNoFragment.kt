@@ -1,4 +1,4 @@
-package com.example.eway.fragments.authentication
+package com.example.eway.user.fragments.authentication
 
 import android.os.Bundle
 import android.text.Editable

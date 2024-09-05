@@ -1,4 +1,4 @@
-package com.example.eway.models
+package com.example.eway.user.models
 
 data class UsersModel(
     var uid: String? = null,

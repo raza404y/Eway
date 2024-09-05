@@ -5,18 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.activities.MainActivity">
-
+    tools:context=".admin.activities.AdminActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mainFragmentContainerView"
+        android:id="@+id/fragmentContainerView2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/main_nav_graph" />
+        app:navGraph="@navigation/admin_nav_graph" />
 </androidx.constraintlayout.widget.ConstraintLayout>

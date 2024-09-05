@@ -18,6 +18,10 @@
     <string name="shop_effortlessly_with_our_app_where_exclusive_deals_and_a_seamless_experience_are_just_a_tap_away">Shop effortlessly with our app, where exclusive deals and a seamless experience are just a tap away.</string>
     <string name="shops_by_category">Shops by Category</string>
     <string name="best_sellers">Best Sellers</string>
+    <string name="buyer">Buyer</string>
+    <string name="seller">Seller</string>
+    <string name="i_am">I\' AM</string>
+    <string name="logout">Logout</string>
 
 
 </resources>

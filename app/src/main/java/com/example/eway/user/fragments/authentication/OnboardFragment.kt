@@ -1,4 +1,4 @@
-package com.example.eway.fragments.authentication
+package com.example.eway.user.fragments.authentication
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.eway.R
-import com.example.eway.activities.MainActivity
+import com.example.eway.user.activities.MainActivity
 import com.example.eway.databinding.FragmentOnboardBinding
-import com.example.eway.viewmodel.AuthViewModel
+import com.example.eway.user.viewmodel.AuthViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

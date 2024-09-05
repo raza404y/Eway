@@ -1,4 +1,4 @@
-package com.example.eway.activities
+package com.example.eway.user.activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

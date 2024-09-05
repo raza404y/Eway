@@ -1,4 +1,4 @@
-package com.example.eway.fragments.authentication
+package com.example.eway.user.fragments.authentication
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,10 +13,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.eway.Utils
-import com.example.eway.activities.MainActivity
+import com.example.eway.user.activities.MainActivity
 import com.example.eway.databinding.FragmentOTPBinding
-import com.example.eway.models.UsersModel
-import com.example.eway.viewmodel.AuthViewModel
+import com.example.eway.user.models.UsersModel
+import com.example.eway.user.viewmodel.AuthViewModel
 import kotlinx.coroutines.launch
 
 class OTPFragment : Fragment() {
@@ -80,7 +80,7 @@ class OTPFragment : Fragment() {
                 if (verified == true) {
                     Utils.showToast(requireContext(), "Logged in Successfully")
                     buttonState(false, 1f, "Verification successful")
-                    startActivity(Intent(requireActivity(),MainActivity::class.java))
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
                 } else if (verified == false) {
                     buttonState(true, 1f, "Verify OTP")
                 }

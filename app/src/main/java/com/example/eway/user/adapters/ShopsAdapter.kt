@@ -1,10 +1,10 @@
-package com.example.eway.adapters
+package com.example.eway.user.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eway.databinding.ShopProductCategoryRvBinding
-import com.example.eway.models.ShopsModel
+import com.example.eway.user.models.ShopsModel
 
 class ShopsAdapter(private val shopList: ArrayList<ShopsModel>) :
     RecyclerView.Adapter<ShopsAdapter.ViewHolder>() {

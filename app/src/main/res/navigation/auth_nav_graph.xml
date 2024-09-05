@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/onboardFragment"
-        android:name="com.example.eway.fragments.authentication.OnboardFragment"
+        android:name="com.example.eway.user.fragments.authentication.OnboardFragment"
         android:label="fragment_onboard"
         tools:layout="@layout/fragment_onboard" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/phoneNoFragment"
-        android:name="com.example.eway.fragments.authentication.PhoneNoFragment"
+        android:name="com.example.eway.user.fragments.authentication.PhoneNoFragment"
         android:label="fragment_phone_no"
         tools:layout="@layout/fragment_phone_no" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/OTPFragment"
-        android:name="com.example.eway.fragments.authentication.OTPFragment"
+        android:name="com.example.eway.user.fragments.authentication.OTPFragment"
         android:label="fragment_o_t_p"
         tools:layout="@layout/fragment_o_t_p" >
         <argument

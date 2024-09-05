@@ -1,10 +1,10 @@
-package com.example.eway.viewmodel
+package com.example.eway.user.viewmodel
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import com.example.eway.Constants
 import com.example.eway.Utils
-import com.example.eway.models.UsersModel
+import com.example.eway.user.models.UsersModel
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth

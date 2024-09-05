@@ -1,4 +1,4 @@
-package com.example.eway.activities
+package com.example.eway.user.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.eway.R
-import com.example.eway.fragments.authentication.OnboardFragment
-import com.example.eway.viewmodel.AuthViewModel
+import com.example.eway.user.fragments.authentication.OnboardFragment
+import com.example.eway.user.viewmodel.AuthViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.appCheck

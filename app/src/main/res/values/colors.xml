@@ -7,5 +7,6 @@
     <color name="view_color">#66808080</color>
     <color name="grey">#D3D3D3</color>
     <color name="disable_btn_color">#8DAAA5A5</color>
+    <color name="search_view_color">#f4f4f4</color>
 
 </resources>
