@@ -23,6 +23,8 @@ navigationFragmentKtxVersion = "1.0.0"
 otpview = "v1.1.2-ktx"
 sdpAndroid = "1.1.0"
 sspAndroid = "1.1.0"
+googleGmsGoogleServices = "4.4.2"
+firebaseDatabase = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,8 +52,10 @@ navigation-fragment-ktx = { module = "android.arch.navigation:navigation-fragmen
 otpview = { module = "com.github.aabhasr1:OtpView", version.ref = "otpview" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

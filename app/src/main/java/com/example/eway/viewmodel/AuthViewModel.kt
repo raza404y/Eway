@@ -2,12 +2,17 @@ package com.example.eway.viewmodel
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel
+import com.example.eway.Constants
 import com.example.eway.Utils
+import com.example.eway.models.UsersModel
+import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.database
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.concurrent.TimeUnit
 
@@ -18,6 +23,15 @@ class AuthViewModel : ViewModel() {
     val otpSent = _otpSent
     private val _verified = MutableStateFlow<Boolean?>(null)
     val verified = _verified
+    private val _currentUser = MutableStateFlow<Boolean>(false)
+    val currentUser = _currentUser
+
+    init {
+        if (Utils.getAuthInstance().currentUser != null){
+            _currentUser.value = true
+        }
+    }
+
     fun sendOTP(phoneNo: String, activity: Activity) {
 
         val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -47,11 +61,13 @@ class AuthViewModel : ViewModel() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    fun signInWithPhoneAuthCredential(userOTP: String, activity: Activity) {
+    fun signInWithPhoneAuthCredential(userOTP: String, activity: Activity, phoneNo: String) {
         val credential = PhoneAuthProvider.getCredential(_verificationId.value.toString(), userOTP)
         Utils.getAuthInstance().signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    val users = UsersModel(Utils.getUserId(),phoneNo,null)
+                    uploadingUserInfoToDatabase(users)
                     _verified.value = true
                     _verified.value = null
                 } else {
@@ -63,4 +79,13 @@ class AuthViewModel : ViewModel() {
                 }
             }
         }
+
+    private fun uploadingUserInfoToDatabase(users: UsersModel) {
+        Firebase.database.reference
+            .child(Constants.ALL_USERS)
+            .child(Constants.USERS)
+            .child(Utils.getUserId())
+            .setValue(users)
     }
+
+}

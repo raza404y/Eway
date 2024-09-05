@@ -1,6 +1,7 @@
-package com.example.eway.fragments
+package com.example.eway.fragments.authentication
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -12,7 +13,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.eway.Utils
+import com.example.eway.activities.MainActivity
 import com.example.eway.databinding.FragmentOTPBinding
+import com.example.eway.models.UsersModel
 import com.example.eway.viewmodel.AuthViewModel
 import kotlinx.coroutines.launch
 
@@ -71,14 +74,13 @@ class OTPFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun verifyOTP(userOTP: String) {
         buttonState(false, .5f, "Verifying...")
-
-
-        authViewModel.signInWithPhoneAuthCredential(userOTP, requireActivity())
+        authViewModel.signInWithPhoneAuthCredential(userOTP, requireActivity(),arg.phoneNo)
         lifecycleScope.launch {
             authViewModel.verified.collect { verified ->
                 if (verified == true) {
                     Utils.showToast(requireContext(), "Logged in Successfully")
-                    buttonState(true, 1f, "Verification successful")
+                    buttonState(false, 1f, "Verification successful")
+                    startActivity(Intent(requireActivity(),MainActivity::class.java))
                 } else if (verified == false) {
                     buttonState(true, 1f, "Verify OTP")
                 }
