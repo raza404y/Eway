@@ -27,6 +27,19 @@
     <string name="switch_to_buyer">Switch to Buyer</string>
     <string name="home">Home</string>
     <string name="upload_products">Upload Products</string>
+    <string name="profile">Profile</string>
+    <string name="product_title">Product title</string>
+    <string name="add_products">Add Products</string>
+    <string name="quantity">Quantity</string>
+    <string name="unit">Unit</string>
+    <string name="price">Price$</string>
+    <string name="e_g_5">e.g 5$</string>
+    <string name="no_of_stocks">No of Stocks.</string>
+    <string name="product_category">Product Category</string>
+    <string name="please_select_some_images_of_product">Please select some images of product</string>
+    <string name="cancel">cancel</string>
+    <string name="upload">Upload</string>
+    <string name="product_type">Product Type</string>
 
 
 </resources>

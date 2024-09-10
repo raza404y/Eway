@@ -149,7 +149,7 @@
                 android:layout_gravity="center"
                 android:visibility="gone"
                 android:progressTint="@color/yellow"
-                android:layout_marginTop="@dimen/_8sdp"/>
+                android:layout_marginTop="@dimen/_4sdp"/>
 
         </FrameLayout>
 

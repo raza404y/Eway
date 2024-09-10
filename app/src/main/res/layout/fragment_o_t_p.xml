@@ -129,7 +129,7 @@
                 android:layout_height="@dimen/_30sdp"
                 android:layout_gravity="center"
                 android:visibility="gone"
-                android:layout_marginTop="@dimen/_8sdp"/>
+                android:layout_marginTop="@dimen/_4sdp"/>
 
         </FrameLayout>
 

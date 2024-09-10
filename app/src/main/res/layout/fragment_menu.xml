@@ -33,7 +33,7 @@
                     android:layout_width="@dimen/_36sdp"
                     android:layout_height="@dimen/_36sdp"
                     android:layout_gravity="center_vertical"
-                    android:padding="@dimen/_8sdp"
+                    android:padding="@dimen/_4sdp"
                     android:background="@drawable/switch_btn_bg"
                     android:contentDescription="@string/phone_num_hint"
                     android:src="@drawable/close"

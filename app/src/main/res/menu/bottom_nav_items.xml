@@ -10,4 +10,8 @@
         android:title="@string/upload_products"
         android:icon="@drawable/add"/>
 
+    <item android:id="@+id/adminProfileFragment"
+        android:title="@string/profile"
+        android:icon="@drawable/user"/>
+
 </menu>

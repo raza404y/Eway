@@ -31,7 +31,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/switch_btn_bg"
                     android:contentDescription="@string/phone_num_hint"
-                    android:padding="@dimen/_8sdp"
+                    android:padding="@dimen/_4sdp"
                     android:src="@drawable/close"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
