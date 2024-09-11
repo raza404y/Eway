@@ -5,6 +5,12 @@ object Constants {
     // realtime-database
     const val ALL_USERS = "AllUsers"
     const val USERS = "Users"
+    const val ADMINS = "admins"
+    const val ADMIN_INFO = "adminInfo"
+    var ALL_PRODUCTS = "all_products/${Utils.generateRandomId(10)}"
+    var PRODUCT_CATEGORY = "product_category/${Utils.generateRandomId(10)}"
+    var PRODUCT_TYPE = "product_type/${Utils.generateRandomId(10)}"
+
 
     // user-roles
     const val SHARED_PREF_NAME = "role"

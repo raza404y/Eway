@@ -7,7 +7,6 @@ import com.example.eway.Utils
 import com.example.eway.user.models.UsersModel
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
@@ -61,13 +60,11 @@ class AuthViewModel : ViewModel() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    fun signInWithPhoneAuthCredential(userOTP: String, activity: Activity, phoneNo: String) {
+    fun signInWithPhoneAuthCredential(userOTP: String, activity: Activity) {
         val credential = PhoneAuthProvider.getCredential(_verificationId.value.toString(), userOTP)
         Utils.getAuthInstance().signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val users = UsersModel(Utils.getUserId(),phoneNo,null)
-                    uploadingUserInfoToDatabase(users)
                     _verified.value = true
                     _verified.value = null
                 } else {
@@ -80,10 +77,18 @@ class AuthViewModel : ViewModel() {
             }
         }
 
-    private fun uploadingUserInfoToDatabase(users: UsersModel) {
+     fun uploadingUserInfoToDatabase(users: UsersModel) {
         Firebase.database.reference
             .child(Constants.ALL_USERS)
             .child(Constants.USERS)
+            .child(Utils.getUserId())
+            .setValue(users)
+    }
+
+    fun uploadingAdminInfoToDatabase(users: UsersModel) {
+        Firebase.database.reference
+            .child(Constants.ADMINS)
+            .child(Constants.ADMIN_INFO)
             .child(Utils.getUserId())
             .setValue(users)
     }

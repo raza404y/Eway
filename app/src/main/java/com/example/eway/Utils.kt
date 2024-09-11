@@ -37,33 +37,18 @@ object Utils {
     }
         private var dialog: AlertDialog? = null
 
-        fun showProgressDialog(context: Context, message: String) {
-            try {
-                val binding = ProgressDialogBinding.inflate(LayoutInflater.from(context))
-                binding.dialogTextView.text = message
-
-                dialog = AlertDialog.Builder(context)
-                    .setView(binding.root)
-                    .create()
-
-                dialog?.setCancelable(false)
-                dialog?.show()
-
-                Log.d("ProgressDialog", "Dialog shown with message: $message")
-            } catch (e: Exception) {
-                Log.e("ProgressDialog", "Error showing progress dialog", e)
-            }
-        }
-
-        fun hideProgressDialog() {
-            try {
-                dialog?.dismiss()
-                dialog = null
-                Log.d("ProgressDialog", "Dialog dismissed")
-            } catch (e: Exception) {
-                Log.e("ProgressDialog", "Error hiding progress dialog", e)
-            }
-        }
+      fun showProgressDialog(context: Context,message: String){
+          val binding = ProgressDialogBinding.inflate(LayoutInflater.from(context))
+          binding.dialogTextView.text = message
+         dialog = AlertDialog.Builder(context).setView(binding.root).create()
+          dialog?.let {
+              it.setCancelable(false)
+              it.show()
+          }
+      }
+    fun hideProgressDialog(){
+        dialog!!.dismiss()
+    }
 
 
 }

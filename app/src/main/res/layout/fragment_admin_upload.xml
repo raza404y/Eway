@@ -30,6 +30,7 @@
                 android:padding="@dimen/_4sdp"
                 android:text="@string/upload"
                 android:textSize="@dimen/_13ssp"
+                android:background="?android:selectableItemBackground"
                 android:textStyle="bold"
                 app:drawableEndCompat="@drawable/uplaod"
                 app:layout_constraintBottom_toBottomOf="parent"

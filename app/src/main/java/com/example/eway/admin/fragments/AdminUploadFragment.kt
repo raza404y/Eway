@@ -1,22 +1,28 @@
 package com.example.eway.admin.fragments
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.eway.Constants
 import com.example.eway.ProductModel
 import com.example.eway.R
 import com.example.eway.Utils
+import com.example.eway.admin.activities.AdminActivity
 import com.example.eway.admin.adapters.SelectedImagesAdapter
 import com.example.eway.admin.viewmodels.AdminProductViewModel
 import com.example.eway.databinding.FragmentAdminUploadBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class AdminUploadFragment : Fragment() {
@@ -49,11 +55,13 @@ class AdminUploadFragment : Fragment() {
         uploadProductToDatabase()
 
     }
+
     private fun selectImagesFromGallery() {
         binding.imagePick.setOnClickListener {
             selectImage.launch("image/*")
         }
     }
+
     private fun autoCompleteTextViews() {
         val units = ArrayAdapter(requireContext(), R.layout.list_item, Constants.unitList)
         val category = ArrayAdapter(requireContext(), R.layout.list_item, Constants.allProductCategory)
@@ -77,7 +85,6 @@ class AdminUploadFragment : Fragment() {
 
     private fun uploadProductToDatabase() {
         binding.uploadBtn.setOnClickListener {
-            Utils.showProgressDialog(requireContext(),"Please wait....")
             val title = binding.productTitleEt.text.toString().trim()
             val quantity = binding.quantityEt.text.toString().trim()
             val unit = binding.unitEt.text.toString().trim()
@@ -96,6 +103,7 @@ class AdminUploadFragment : Fragment() {
                 type.isEmpty() -> Utils.showToast(requireContext(), "Select an product type")
                 imageUris.isEmpty() -> Utils.showToast(requireContext(), "Select some product images.")
                 else -> {
+                    Utils.showProgressDialog(requireContext(), "Uploading product...")
                     val productModel = ProductModel(
                         productTitle = title,
                         productQuantity = quantity.toInt(),
@@ -115,14 +123,52 @@ class AdminUploadFragment : Fragment() {
 
     private fun uploadingImagesArray(productModel: ProductModel) {
         val contentResolver = requireContext().contentResolver
-        viewModel.uploadImages(contentResolver,imageUris)
+        viewModel.uploadImagesToStorage(contentResolver, imageUris)
         lifecycleScope.launch {
             viewModel.imagesUploaded.collect {
                 if (it) {
-                    Utils.hideProgressDialog()
-                    Utils.showToast(requireContext(), "success")
+                    gettingImagesUrls(productModel)
                 }
             }
         }
+    }
+
+    private fun gettingImagesUrls(productModel: ProductModel) {
+        Utils.showProgressDialog(requireContext(), "Getting ready for live...")
+        lifecycleScope.launch {
+            viewModel.downloadedUrls.collect { imgUrlsList ->
+                productModel.productImagesURIList = imgUrlsList
+                savingProductToDatabase(productModel)
+            }
+        }
+    }
+
+    private fun savingProductToDatabase(productModel: ProductModel) {
+        viewModel.saveProductToDatabase(productModel)
+        lifecycleScope.launch {
+            viewModel.productUploadedSuccessfully.collectLatest { isUploaded ->
+                Utils.hideProgressDialog()
+                if (isUploaded) {
+                    Utils.showToast(requireContext(), "Your product is Live now.")
+                    startActivity(Intent(requireActivity(),AdminActivity::class.java))
+                    setEmptyAllFields()
+                } else {
+                    Toast.makeText(requireContext(), "Failed to upload product", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun setEmptyAllFields() {
+        imageUris.clear()
+        binding.productTitleEt.setText("")
+        binding.quantityEt.setText("")
+        binding.unitEt.setText("")
+        binding.priceEt.setText("")
+        binding.noOfStockEt.setText("")
+        binding.productCategoryEt.setText("")
+        binding.productTypeEt.setText("")
+
     }
 }

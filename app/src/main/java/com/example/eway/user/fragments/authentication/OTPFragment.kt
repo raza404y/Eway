@@ -79,7 +79,7 @@ class OTPFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun verifyOTP(userOTP: String) {
         buttonState(false, .5f, "Verifying...")
-        authViewModel.signInWithPhoneAuthCredential(userOTP, requireActivity(),arg.phoneNo)
+        authViewModel.signInWithPhoneAuthCredential(userOTP, requireActivity())
         lifecycleScope.launch {
             authViewModel.verified.collect { verified ->
                 if (verified == true) {
@@ -87,12 +87,14 @@ class OTPFragment : Fragment() {
                     val sharedPreferences = requireContext().getSharedPreferences(Constants.SHARED_PREF_NAME,Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
                     editor.putString(Constants.USER_ROLE,arg.userRole).apply()
-
                     Utils.showToast(requireContext(), "Logged in Successfully")
+                    val user = UsersModel(Utils.getUserId(), arg.phoneNo,null)
                     buttonState(false, 1f, "Verification successful")
                     if (arg.userRole == "buyer") {
+                        authViewModel.uploadingUserInfoToDatabase(user)
                         startActivity(Intent(requireActivity(), MainActivity::class.java))
                     }else{
+                        authViewModel.uploadingAdminInfoToDatabase(user)
                         startActivity(Intent(requireActivity(), AdminActivity::class.java))
                     }
                     requireActivity().finish()
