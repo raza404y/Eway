@@ -1,14 +1,21 @@
 package com.example.eway
 
 object Constants {
+
+    // realtime-database
     const val ALL_USERS = "AllUsers"
     const val USERS = "Users"
+
+    // user-roles
     const val SHARED_PREF_NAME = "role"
     const val USER_ROLE = "buyer"
 
+    // storage
+    const val PRODUCT_IMAGES = "product_images"
+
     val allProductCategory =
         listOf(
-            "All,Vegetables & fruits,Dairy & breakfast,Munchies,Cold Drinks & juices,Sweets",
+            "All","Vegetables & fruits","Dairy & breakfast","Munchies","Cold Drinks & juices","Sweets",
             "Dry fruits",
             "Sauces & spreads",
             "Chicken meat",
