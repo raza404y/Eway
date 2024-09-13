@@ -19,19 +19,6 @@ object Constants {
     // storage
     const val PRODUCT_IMAGES = "product_images"
 
-    val allProductCategory =
-        listOf(
-            "All","Vegetables & fruits","Dairy & breakfast","Munchies","Cold Drinks & juices","Sweets",
-            "Dry fruits",
-            "Sauces & spreads",
-            "Chicken meat",
-            "Organic Premium",
-            "Pharma",
-            "Cleaning essentials",
-            "Home & office",
-            "Personal Care",
-            "Pet Care"
-        )
 
     val unitList = listOf(
         "kg",
@@ -56,5 +43,66 @@ object Constants {
         "Ghee",
         "Water"
     )
+
+    val categoryImagesList = arrayListOf(
+        R.drawable.baseline_category_24,
+        R.drawable.cleaning,
+        R.drawable.cold_and_juices,
+        R.drawable.dairy_breakfast,
+        R.drawable.dry_masala,
+        R.drawable.home_office,
+        R.drawable.instant,
+        R.drawable.instant_frozen,
+        R.drawable.masala,
+        R.drawable.milma_milk,
+        R.drawable.munchies,
+        R.drawable.organic_premium,
+        R.drawable.paan_corner,
+        R.drawable.personal_care,
+        R.drawable.pet_care,
+        R.drawable.atta_rice,
+        R.drawable.baby,
+        R.drawable.baby_care,
+        R.drawable.chicken_meat,
+        R.drawable.pharma_wellness,
+        R.drawable.sangam_milk,
+        R.drawable.sauce_spreads,
+        R.drawable.sweet_tooth,
+        R.drawable.tea,
+        R.drawable.tea_coffee,
+        R.drawable.toned_milk,
+        R.drawable.vegetable
+    )
+
+    val categoryNamesList = arrayListOf(
+        "All",
+        "Cleaning",
+        "Cold Drinks and Juices",
+        "Dairy and Breakfast",
+        "Dry Masala",
+        "Home and Office",
+        "Instant",
+        "Instant Frozen",
+        "Masala",
+        "Milma Milk",
+        "Munchies",
+        "Organic Premium",
+        "Paan Corner",
+        "Personal Care",
+        "Pet Care",
+        "Atta and Rice",
+        "Baby",
+        "Baby Care",
+        "Chicken Meat",
+        "Pharma and Wellness",
+        "Sangam Milk",
+        "Sauce and Spreads",
+        "Sweet Tooth",
+        "Tea",
+        "Tea and Coffee",
+        "Toned Milk",
+        "Vegetables"
+    )
+
 
 }

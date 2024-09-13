@@ -12,8 +12,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.eway.Constants
 import com.example.eway.ProductModel
 import com.example.eway.R
@@ -22,7 +23,6 @@ import com.example.eway.admin.activities.AdminActivity
 import com.example.eway.admin.adapters.SelectedImagesAdapter
 import com.example.eway.admin.viewmodels.AdminProductViewModel
 import com.example.eway.databinding.FragmentAdminUploadBinding
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class AdminUploadFragment : Fragment() {
@@ -54,6 +54,17 @@ class AdminUploadFragment : Fragment() {
         selectImagesFromGallery()
         uploadProductToDatabase()
 
+        viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.productUploadedSuccessfully.collect { isUploaded ->
+                    if (isUploaded) {
+                        Utils.hideProgressDialog()
+                        Utils.showToast(requireContext(), "Your product is Live now.")
+                        setEmptyAllFields()
+                        startActivity(Intent(requireActivity(),AdminActivity::class.java))
+                    }
+            }
+        }
+
     }
 
     private fun selectImagesFromGallery() {
@@ -64,7 +75,7 @@ class AdminUploadFragment : Fragment() {
 
     private fun autoCompleteTextViews() {
         val units = ArrayAdapter(requireContext(), R.layout.list_item, Constants.unitList)
-        val category = ArrayAdapter(requireContext(), R.layout.list_item, Constants.allProductCategory)
+        val category = ArrayAdapter(requireContext(), R.layout.list_item, Constants.categoryNamesList)
         val type = ArrayAdapter(requireContext(), R.layout.list_item, Constants.productTypes)
 
         binding.unitEt.setAdapter(units)
@@ -103,7 +114,6 @@ class AdminUploadFragment : Fragment() {
                 type.isEmpty() -> Utils.showToast(requireContext(), "Select an product type")
                 imageUris.isEmpty() -> Utils.showToast(requireContext(), "Select some product images.")
                 else -> {
-                    Utils.showProgressDialog(requireContext(), "Uploading product...")
                     val productModel = ProductModel(
                         productTitle = title,
                         productQuantity = quantity.toInt(),
@@ -145,18 +155,6 @@ class AdminUploadFragment : Fragment() {
 
     private fun savingProductToDatabase(productModel: ProductModel) {
         viewModel.saveProductToDatabase(productModel)
-        lifecycleScope.launch {
-            viewModel.productUploadedSuccessfully.collectLatest { isUploaded ->
-                Utils.hideProgressDialog()
-                if (isUploaded) {
-                    Utils.showToast(requireContext(), "Your product is Live now.")
-                    startActivity(Intent(requireActivity(),AdminActivity::class.java))
-                    setEmptyAllFields()
-                } else {
-                    Toast.makeText(requireContext(), "Failed to upload product", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
     }
 
     @SuppressLint("SetTextI18n")

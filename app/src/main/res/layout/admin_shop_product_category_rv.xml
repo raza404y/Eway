@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_10sdp"
+    android:background="@color/white"
+    android:layout_marginHorizontal="@dimen/_4sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+
+        <ImageView
+            android:id="@+id/shopImage"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:background="@drawable/shop_category_bg"
+            android:contentDescription="@null"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/vegetable"
+            android:layout_weight="1" />
+
+
+        <TextView
+            android:id="@+id/shopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/_3sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:singleLine="true"
+            android:text="Vegetables"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/shopImage"
+            app:layout_constraintStart_toStartOf="@+id/shopImage"
+            app:layout_constraintTop_toBottomOf="@+id/shopImage" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

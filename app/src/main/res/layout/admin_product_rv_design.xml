@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8sdp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_6sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_120sdp"
+                app:iss_auto_cycle="true"
+                app:iss_delay="1000"
+                app:iss_period="1000"
+                app:iss_text_align="CENTER"
+                app:iss_title_background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:paddingVertical="@dimen/_3sdp"
+                android:ellipsize="end"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:text="Cold drinks"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/image_slider"
+                app:layout_constraintTop_toBottomOf="@+id/image_slider" />
+
+            <TextView
+                android:id="@+id/product_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_2sdp"
+                android:text="500kg"
+                app:layout_constraintStart_toStartOf="@+id/product_name"
+                app:layout_constraintTop_toBottomOf="@+id/product_name" />
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="TextView"
+                android:textColor="#F44336"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/product_quantity"
+                app:layout_constraintStart_toEndOf="@+id/product_quantity"
+                app:layout_constraintTop_toTopOf="@+id/product_quantity" />
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/product_price" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_33sdp"
+                android:backgroundTint="@color/white"
+                android:text="@string/edit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                app:cornerRadius="0dp"
+                app:layout_constraintEnd_toEndOf="@+id/product_name"
+                app:layout_constraintStart_toStartOf="@+id/product_quantity"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:rippleColor="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

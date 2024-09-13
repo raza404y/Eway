@@ -4,17 +4,25 @@ import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.eway.Constants
 import com.example.eway.ProductModel
 import com.example.eway.Utils
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.callbackFlow
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.util.UUID
@@ -26,10 +34,6 @@ class AdminProductViewModel : ViewModel() {
 
     private val _downloadAbleUrls = MutableStateFlow<ArrayList<String>>(arrayListOf())
     val downloadedUrls = _downloadAbleUrls
-
-    private val _productUploadedSuccessfully = MutableStateFlow<Boolean>(false)
-    val productUploadedSuccessfully = _productUploadedSuccessfully
-
 
 
     fun uploadImagesToStorage(contentResolver: ContentResolver, imagesUri: ArrayList<Uri>) {
@@ -66,6 +70,9 @@ class AdminProductViewModel : ViewModel() {
         return outputStream.toByteArray() // Return the compressed image as a byte array
     }
 
+    private val _productUploadedSuccessfully = MutableStateFlow<Boolean>(false)
+    val productUploadedSuccessfully = _productUploadedSuccessfully
+
     fun saveProductToDatabase(productModel: ProductModel) {
         FirebaseDatabase.getInstance()
             .getReference(Constants.ADMINS)
@@ -79,10 +86,29 @@ class AdminProductViewModel : ViewModel() {
                             .getReference(Constants.ADMINS)
                             .child(Constants.PRODUCT_TYPE)
                             .setValue(productModel).addOnSuccessListener {
-                                    _productUploadedSuccessfully.value = true
+                                _productUploadedSuccessfully.value = true
                             }
                     }
             }
 
+    }
+
+    fun getAllProductFromDatabase() : Flow<List<ProductModel>> = callbackFlow {
+        val database = FirebaseDatabase.getInstance().getReference(Constants.ADMINS).child("all_products")
+        val eventListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val products = ArrayList<ProductModel>()
+                for (i in snapshot.children){
+                    val p = i.getValue(ProductModel::class.java)
+                    products.add(p!!)
+                }
+                trySend(products)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        database.addValueEventListener(eventListener)
+        awaitClose{database.removeEventListener(eventListener)}
     }
 }

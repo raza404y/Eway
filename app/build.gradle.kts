@@ -84,4 +84,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
+    // image slider
+    implementation(libs.imageslideshow)
+
 }
