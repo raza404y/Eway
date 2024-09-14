@@ -43,6 +43,7 @@
     <string name="edit">Edit</string>
     <string name="seller1">Seller!</string>
     <string name="seller22">(Seller)</string>
+    <string name="no_product_available_in_category">No Product available in category.</string>
 
 
 </resources>

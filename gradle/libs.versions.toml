@@ -23,6 +23,7 @@ navigationFragmentKtx = "2.7.7"
 navigationFragmentKtxVersion = "1.0.0"
 otpview = "v1.1.2-ktx"
 sdpAndroid = "1.1.0"
+shimmer = "0.5.0"
 sspAndroid = "1.1.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseDatabase = "21.0.0"
@@ -55,6 +56,7 @@ material-v190 = { module = "com.google.android.material:material", version.ref =
 navigation-fragment-ktx = { module = "android.arch.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }
 otpview = { module = "com.github.aabhasr1:OtpView", version.ref = "otpview" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }

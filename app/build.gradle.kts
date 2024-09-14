@@ -87,4 +87,7 @@ dependencies {
     // image slider
     implementation(libs.imageslideshow)
 
+    implementation(libs.shimmer)
+
+
 }

@@ -4,20 +4,14 @@ import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.eway.Constants
 import com.example.eway.ProductModel
 import com.example.eway.Utils
-import com.google.android.gms.tasks.Task
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -93,22 +87,25 @@ class AdminProductViewModel : ViewModel() {
 
     }
 
-    fun getAllProductFromDatabase() : Flow<List<ProductModel>> = callbackFlow {
+    fun getAllProductFromDatabase(shopName: String): Flow<List<ProductModel>> = callbackFlow {
         val database = FirebaseDatabase.getInstance().getReference(Constants.ADMINS).child("all_products")
-        val eventListener = object : ValueEventListener{
+        val eventListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val products = ArrayList<ProductModel>()
-                for (i in snapshot.children){
+                for (i in snapshot.children) {
                     val p = i.getValue(ProductModel::class.java)
-                    products.add(p!!)
+                    if (shopName == "All" || p?.productCategory == shopName) {
+                        products.add(p!!)
+                    }
                 }
                 trySend(products)
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         }
         database.addValueEventListener(eventListener)
-        awaitClose{database.removeEventListener(eventListener)}
+        awaitClose { database.removeEventListener(eventListener) }
     }
 }
